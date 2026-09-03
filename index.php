@@ -6,106 +6,84 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- 
+    Funciones en PHP 
+        Una funcion en escencia permite guardar en memoria una accion o formula.
 
-    <span>Hola</span>
-    <br>
-    <a href="">Hola</a>
-    <br>
+
+    Ignorar por el momento
+        mail
+        funciones relacionadas a MySQL
+    -->
+
     <?php
-        /* 
-        La variable sirve para guardar informacion en el programa
-        Ejemplo: Yo me llamo {nombre}
-        Las variables en PHP se declaran con $ al inicio mas el nombre del identificador de la variable
-        */
-        /* 
-        Una forma de nombrar las variables es camelCase o snake_case
-        */
-    
-
-        $nombre="pepe";
-
-        /* Una variable puede cambiar de valor a lo largo de la ejecucion del programa */
-        /* Asi se re-asigna una variable en PHP */
-        $nombre='juan';
-
-
-        $edad=25;
-        $altura=1.73;
-
-        //Esto es un dato booleano
-        //Hay solo 2 valores booleanos true y false
-        $esAdmin=true;
-
-        /* 
-        el . es el operador de concatenacion
-        Concatenar es la union de 2 textos
-        */
+        //Definicion (Crear la funcion)
+        //mostrarMensajeBienvenida es el identificador de mi funcion
+        function mostrarMensajeBienvenida (){
+            //Dentro de las llaves definimos las acciones de nuestra funcion
+            echo "Hola mi nombre es Pepe";
+        } 
         
-        echo "Hola " . $nombre;
+        //invocacion o llamada o ejecucion de la funcion (usar la funcion)
+        //mostrarMensajeBienvenida();
 
-        //br es una etiqueta de HTML que nos permite hacer un salto de linea
-        echo "<br>";
 
-        //Para averiguar que tipo de dato es una variable
-        echo gettype($nombre);
-        echo "<br>";
-        echo gettype($edad);
-        echo "<br>";
-        echo gettype($altura);
-        echo "<br>";
-        echo gettype($esAdmin);
 
-        //Constantes
-        //Las constantes son variables que no cambiaran de valor a lo largo de la ejecucion del programa
-        //Las constantes se escriben en UPPER_SNAKE_CASE
-        
-        const PI = 3.14;
-        const IVA = 21;
-        const URL_MERCADO_PAGO = 'https://mercadopago.com.ar';
-        const APP_VERSION = '0.0.1';
+        //los parametros nos permiten enviar informacion a una funcion
+        //la funcion saludar recibe el parametro nombre
+        function saludar($nombre){
+            echo "hola " . $nombre;
+            echo '<br/>';
+        }
+
+        //saludar("Juan");
+        //saludar('Maria');
 
         /* 
-        colorFondo var
-        idiomaSeleccionado var
-        contraseniaDeDatabase const
-        idiomaDefault const
+        Crear una funcion llamada calcularIva que recibira un precio y imprimira en pantalla en 21% de ese precio
+        Ejemplo:
+            calcularIva(100)
+                Debe mostrar: echo El iva del producto es $21
+            calcularIva(200)
+                Debe mostrar: echo El iva del producto es $42
         */
+        /*  
+        const PORCENTAJE_IVA = 21;
 
-        //TODO: Averiguar porque los todo salen resaltados
+        function calcularIva($precio){
+            $iva = $precio * (PORCENTAJE_IVA / 100);
+            echo "El valor del iva para el precio $" . $precio . " es $" . $iva;
+            echo '<br/>';
+        }
 
-
-        //operadores aritmeticos
+        calcularIva(100);
+        calcularIva(200); 
+        */
         /* 
-        *: multiplicar
-        /: division
-        +: sumar
-        -: resta
-        %: resto
+            f(x) = x * 3 + 1
+            f(x = 2) = 7
+            f(x = 3) = 10
         */
-        $precio = 1000;
-        $iva_del_producto= $precio * (IVA / 100);
-        echo "<br>";
-        echo $iva_del_producto;
 
-        echo "<br>";
-        echo 9 % 2;
-        echo "<br>";
-        echo 10 % 2;
+        //Cual deberia ser la responsabilidad de calcularIva?
+        //Es calcular el iva de x precio
+
+        const PORCENTAJE_IVA = 21;
+
+        function calcularIva($precio){
+            return $precio * (PORCENTAJE_IVA / 100);
+        }
+
+        $precioDeSilla = 300;
+        $ivaDeSilla = calcularIva($precioDeSilla);
+        echo 'El iva de la silla es $' . $ivaDeSilla;
 
 
-        //Comparadores:
         /* 
-        ==: igualdad
-        !=: diferencia (si un dato es distinto a otro)
-        >: mayor a
-        <: menor a
-        >=: mayor o igual
-        <=: menor o igual
+        duplicar($numero) y devolver el doble
+        promediar($numero1, $numero2, $numero3) y devolver el promedio entre esos 3 numeros
+        sumar($numero1, $numero2) y devolver la suma de esos 2 numeros
         */
-
-        echo "<br>";
-        echo 1 == 9;
-    ?>  
+    ?>
 </body>
 </html>
-
