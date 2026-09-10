@@ -3,87 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Clase 4</title>
 </head>
 <body>
-    <!-- 
-    Funciones en PHP 
-        Una funcion en escencia permite guardar en memoria una accion o formula.
+    <h1>Formulario usando GET</h1>
 
+    <!-- Pedir nombre y edad -->
+    <form method="get">
+        <div>
+            <!-- label permite dar una descripcion/intruccion de que se espera que el usuario coloque en el campo -->
+            <!-- El for atributte debe ser igual al id del campo al que se relaciona -->
+            <label for="nombre">Ingresa tu nombre:</label>
 
-    Ignorar por el momento
-        mail
-        funciones relacionadas a MySQL
-    -->
+            <!-- con input podemos hacer un campo de formulario, dependiendo del type del input sera el tipo de campo -->
+            <input type="text" id="nombre" placeholder="Jonh Doe" name="nombre"/>
+        </div>
 
-    <?php
-        //Definicion (Crear la funcion)
-        //mostrarMensajeBienvenida es el identificador de mi funcion
-        function mostrarMensajeBienvenida (){
-            //Dentro de las llaves definimos las acciones de nuestra funcion
-            echo "Hola mi nombre es Pepe";
-        } 
+        <div>
+            <!-- label permite dar una descripcion/intruccion de que se espera que el usuario coloque en el campo -->
+            <label for="edad">Ingresa tu edad:</label>
+            <input type="number" id="edad" min="1" max="120" name="edad"/>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <?php 
+
+        /* si existe/se envio nombre, ahi mostrame el h1 */
+        /* &&: y logico o AND, si el nombre y la edad existen ejecuto x cosa */
+        if( isset($_GET['nombre']) && isset($_GET['edad']) ){
+            $nombre = $_GET['nombre'];
+            $edad = $_GET['edad'];
+            echo '<h1>SOS ' . $nombre . '</h1>';
+            echo '<p>Tenes ' . $edad . ' años</p>';
+            if($edad >= 18){
+                echo '<h2>Sos mayor de edad</h2>';
+            }
+            else{
+                echo '<h2>Sos menor de edad</h2>';
+            }
+        }
+        else{
+            echo '<span>Estamos aguardando a que completes el formulario..</span>';
+        }
         
-        //invocacion o llamada o ejecucion de la funcion (usar la funcion)
-        //mostrarMensajeBienvenida();
-
-
-
-        //los parametros nos permiten enviar informacion a una funcion
-        //la funcion saludar recibe el parametro nombre
-        function saludar($nombre){
-            echo "hola " . $nombre;
-            echo '<br/>';
-        }
-
-        //saludar("Juan");
-        //saludar('Maria');
-
-        /* 
-        Crear una funcion llamada calcularIva que recibira un precio y imprimira en pantalla en 21% de ese precio
-        Ejemplo:
-            calcularIva(100)
-                Debe mostrar: echo El iva del producto es $21
-            calcularIva(200)
-                Debe mostrar: echo El iva del producto es $42
-        */
-        /*  
-        const PORCENTAJE_IVA = 21;
-
-        function calcularIva($precio){
-            $iva = $precio * (PORCENTAJE_IVA / 100);
-            echo "El valor del iva para el precio $" . $precio . " es $" . $iva;
-            echo '<br/>';
-        }
-
-        calcularIva(100);
-        calcularIva(200); 
-        */
-        /* 
-            f(x) = x * 3 + 1
-            f(x = 2) = 7
-            f(x = 3) = 10
-        */
-
-        //Cual deberia ser la responsabilidad de calcularIva?
-        //Es calcular el iva de x precio
-
-        const PORCENTAJE_IVA = 21;
-
-        function calcularIva($precio){
-            return $precio * (PORCENTAJE_IVA / 100);
-        }
-
-        $precioDeSilla = 300;
-        $ivaDeSilla = calcularIva($precioDeSilla);
-        echo 'El iva de la silla es $' . $ivaDeSilla;
-
-
-        /* 
-        duplicar($numero) y devolver el doble
-        promediar($numero1, $numero2, $numero3) y devolver el promedio entre esos 3 numeros
-        sumar($numero1, $numero2) y devolver la suma de esos 2 numeros
-        */
     ?>
 </body>
 </html>
+
