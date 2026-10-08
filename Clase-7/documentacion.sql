@@ -37,6 +37,28 @@ CREATE TABLE membresias (
 )
 
 INSERT INTO usuarios (nombre, email, password) VALUES ('pepe', "pepe@gmail.com", 'pepe123')
-
 INSERT INTO foros (nombre, descripcion) VALUES ('Juegos de mesa', 'Ven a hablar sobre juegos de mesa')
 INSERT INTO membresias (fk_id_usuario, fk_id_foro, rol) VALUES (1, 1, 'dueño')
+
+/* El select sirve para poder traer informacion de una tabla. Nos permite seleccionar registros de una tabla */
+/* 
+Traer la lista de usuarios
+Traer la lista de foros
+Traer la lista de membresias de un foro
+ */
+
+/* seleccionamos todas las columnas de la tabla de usuarios (traigo la lista entera de usuarios) */
+SELECT * FROM usuarios
+
+SELECT id, nombre, email, fecha_creacion FROM usuarios
+
+SELECT * FROM foros WHERE id = 1
+
+SELECT * FROM usuarios WHERE email = 'pepe@gmail.com'
+
+SELECT * FROM foros WHERE nombre LIKE '%php%'
+
+/* SELECT * FROM usuarios ORDER BY fecha_creacion DESC
+ */
+
+ SELECT * FROM foros LIMIT 2
